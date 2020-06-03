@@ -7,6 +7,7 @@ app = Flask (__name__)
 client =MongoClient("mongodb://127.0.0.1:27017")
 db=client.proyecto
 prendas= db.Prendas
+t="AlpacaStore"
 
 def redirect_url():
     return request.args.get('next') or \
@@ -18,7 +19,7 @@ def redirect_url():
 @app.route("/list")
 def lists():
     prendas_1= prendas.find()
-    return render_template('index.html', prendas=prendas_1)
+    return render_template('index.html', prendas=prendas_1,tittle=t)
 
 # @app.route("/action", methods=["POST"])
 # def action():

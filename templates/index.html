@@ -1,5 +1,9 @@
 <html>
-
+	<title>{{tittle}}</title>
+	<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+	<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+	<script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>  
+	<script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
 <head>
 	
 </head>
@@ -7,12 +11,12 @@
 <body>
 	
 	<ul>
-		<li><a href="/list">ALL</a></li>
+		<li><a href="/list">Prendas</a></li>
 	</ul>
 
 	<hr>
 	{% if prendas[0] %}
-	<b><big>To-Do LIST :</big></b>
+	<b><big>Lista de Prendas :</big></b>
 	<table>
 		<tr id="row">
 			<th>Nombre</th>
