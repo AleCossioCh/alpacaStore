@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	
+</head>
+
+<body>
+	
+	<ul>
+		<li><a href="/list">ALL</a></li>
+	</ul>
+
+	<hr>
+	{% if prendas[0] %}
+	<b><big>To-Do LIST :</big></b>
+	<table>
+		<tr id="row">
+			<th>Nombre</th>
+			<th>Descripcion</th>
+			<th>Precio</th>
+			<th>Color</th>
+			<th>Stock</th>
+			<th>categoria</th>
+		</tr>
+		{% for prenda in prendas %}
+		<tr class="datas">
+			<td>{{ prenda["Nombre"] }}</td>
+			<td>{{ prenda["Descripcion"] }}</td>
+			<td>{{ prenda["Precio"] }}</td>
+			<td>{{ prenda["Color"] }}</td>
+			<td>{{ prenda["Stock"] }}</td>
+			<td>{{ prenda["categoria"] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+	<h4>No Tasks in the List !!</h4>
+	{% endif %}
+</body>
+
+</html>
