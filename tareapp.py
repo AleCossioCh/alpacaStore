@@ -21,6 +21,12 @@ def lists():
     prendas_1= prendas.find()
     return render_template('index.html', prendas=prendas_1,tittle=t)
 
+
+
+
+
+
+
 # @app.route("/action", methods=["POST"])
 # def action():
 #     name=request.values.get("name")

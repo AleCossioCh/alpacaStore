@@ -26,6 +26,7 @@
 			<th>Stock</th>
 			<th>Clasificaciones</th>
 			<th>Codigo</th>
+			<th>URL_de_imagen</th>
 		</tr>
 		{% for prenda in prendas %}
 		<tr class="datas">
@@ -36,6 +37,7 @@
 			<td>{{ prenda["Stock"] }}</td>
 			<td>{{ prenda["Clasificaciones"] }}</td>
 			<td>{{ prenda["Codigo"] }}</td>
+			<td>{{ prenda["URL_de_imagen"] }}</td>
 		</tr>
 		{% endfor %}
 	</table>
