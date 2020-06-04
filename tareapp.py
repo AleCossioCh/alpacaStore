@@ -75,10 +75,23 @@ def tasks8 ():
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
 @app.route("/CategoriaChaquetas")
-def tasks8 ():
+def tasks9 ():
     prendas_l = prendas.find({"categoria":"9.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
+@app.route("/prendasMasVendidas")
+def tasks10 ():
+    # db.Prendas.find({}).sort({Numero_de_Ventas:-1}).limit(5) 
+    prendas_l = prendas.find({})
+    prendas_2 = sorted(prendas_l, key=lambda prenda: prenda['Numero_de_Ventas'], reverse=True)
+    return render_template('index.html',prendas=prendas_2,tittle=t)
+
+@app.route("/prendasMasVistas")
+def tasks11 ():
+    # db.Prendas.find({}).sort({Numero_de_Ventas:-1}).limit(5) 
+    prendas_l = prendas.find({})
+    prendas_2 = sorted(prendas_l, key=lambda prenda: prenda['Numero_de_Vistas'])
+    return render_template('index.html',prendas=prendas_2,tittle=t)
 
 if __name__=="__main__":
     app.run()
