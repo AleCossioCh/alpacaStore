@@ -15,7 +15,8 @@
             <td>Color</td>
             <td>Stock</td>
             <td>Clasificacion</td>
-            <td>Codigo</td>
+			<td>Codigo</td>
+			<td>Estilo de Fabricacion</td>
             <td>URL_de_imagen</td>
 		    <td class="func">Options</td>
 	    </tr>
@@ -28,6 +29,7 @@
 			<td>{{ prenda["Stock"] }}</td>
 			<td>{{ prenda["Clasificaciones"] }}</td>
 			<td>{{ prenda["Codigo"] }}</td>
+			<td>{{ prenda["Estilo_de_Fabricacion"] }}</td>
 			<td>{{ prenda["URL_de_imagen"] }}</td>
 			<td><a href="./remove?_id={{ prenda['_id'] }}"><button type="submit">Agregar al Carrito</button></a></td>
 		</tr>
