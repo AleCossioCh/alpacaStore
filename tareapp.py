@@ -32,6 +32,12 @@ def search():
         prendas_1=prendas.find({refer:key})
     return render_template('searchlist.html',prendas=prendas_1,t=t)
 
+@app.route("/CategoriasGorras")
+def tasks ():
+    
+    prendas_l = prendas.find({"categoria":"001"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
 # @app.route("/action", methods=["POST"])
 # def action():
 #     name=request.values.get("name")
