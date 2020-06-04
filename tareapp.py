@@ -22,7 +22,6 @@ def lists():
 
 
 @app.route("/search", methods=["GET"])
-
 def search():
     key=request.values.get("key")
     refer=request.values.get("refer")
@@ -32,20 +31,15 @@ def search():
         prendas_1=prendas.find({refer:key})
     return render_template('searchlist.html',prendas=prendas_1,t=t)
 
-@app.route("/CategoriasGorras")
+@app.route("/CategoriaGorras")
 def tasks ():
-    
-    prendas_l = prendas.find({"categoria":"2.0"})
+    prendas_l = prendas.find({"categoria":"1.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
-# @app.route("/action", methods=["POST"])
-# def action():
-#     name=request.values.get("name")
-#     desc=request.values.get("desc")
-#     date=request.values.get("date")
-#     pr=request.values.get("pr")
-#     todos.insert({"name":name,"desc":desc,"date":date,"pr":pr,"done":"no"})
-#     return redirect("/list")
+@app.route("/CategoriaCalcetines")
+def tasks ():
+    prendas_l = prendas.find({"categoria":"2.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
 
 if __name__=="__main__":
     app.run()
