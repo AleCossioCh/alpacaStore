@@ -21,7 +21,13 @@ def lists():
     prendas_1= prendas.find()
     return render_template('index.html', prendas=prendas_1,tittle=t)
 
-
+@app.route("/")
+@app.route("/Busqueda")
+def tasks ():
+    #Display the Uncompleted Tasks
+    prendas_1 = prendas.find({"done":"no"})
+    #a2="active"
+    return render_template('index.html',prendas=prendas_1,tittle=t)
 
 
 
