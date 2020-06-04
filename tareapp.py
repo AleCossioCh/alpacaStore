@@ -37,9 +37,48 @@ def tasks ():
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
 @app.route("/CategoriaCalcetines")
-def tasks ():
+def tasks1 ():
     prendas_l = prendas.find({"categoria":"2.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
+
+
+@app.route("/CategoriaChalecos")
+def tasks3 ():
+    prendas_l = prendas.find({"categoria":"3.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+
+
+@app.route("/CategoriaPullovers")
+def tasks4 ():
+    prendas_l = prendas.find({"categoria":"4.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+@app.route("/CategoriaPonchos")
+def tasks5 ():
+    prendas_l = prendas.find({"categoria":"5.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+@app.route("/Categoriachalinas")
+def tasks6 ():
+    prendas_l = prendas.find({"categoria":"6.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+@app.route("/CategoriaMantas")
+def tasks7 ():
+    prendas_l = prendas.find({"categoria":"7.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+@app.route("/CategoriaJerseys")
+def tasks8 ():
+    prendas_l = prendas.find({"categoria":"8.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
+@app.route("/CategoriaChaquetas")
+def tasks8 ():
+    prendas_l = prendas.find({"categoria":"9.0"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
+
 
 if __name__=="__main__":
     app.run()
