@@ -6,7 +6,7 @@
 <body>
 	<hr>
 	{% if prendas[0] %}
-	<h3>Result of the Search : </h3>
+	<h3>Results: </h3>
 	<table>
 	    <tr id="row">
 	    	<td>Nombre</td>
@@ -29,7 +29,7 @@
 			<td>{{ prenda["Clasificaciones"] }}</td>
 			<td>{{ prenda["Codigo"] }}</td>
 			<td>{{ prenda["URL_de_imagen"] }}</td>
-			<td><a href="./remove?_id={{ prenda['_id'] }}"><button type="submit">Agregar al Carrito</button></a></td>
+			<td><a href="./add?_id={{ prenda['_id'] }}"><button type="submit">Agregar al Carrito</button></a></td>
 		</tr>
 		{% endfor %}
 	{% else %}
