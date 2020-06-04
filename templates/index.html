@@ -18,25 +18,22 @@
 	{% if prendas[0] %}
 	<div span="right">
 	<form action="/search"	method="GET" >
-	<table class="none" id="close">
-	<tr>
+		<table class="none" id="close">
+		<tr>
 		<td></td><td></td>
-		<td><big><b>Buscar por:</b></big></td>
-		<td><select name="Filtro" required>
-		<option value="Nombre">Nombre</option>
-		<option value="Codigo">Codigo</option>
-		<option value="Categoria">Categoria</option>
-		<option value="Clasificaion">Clasificaion</option>
+		<td><big><b>Search Reference:</b></big></td>
+		<td><select name="refer" required>
+			<option value="Nombre">Nombre</option>
+			<option value="Color">Color</option>
+			<option value="Codigo">Codigo</option>
+			<option value="categoria">Categoria</option>
 		</select></td>
-		<td><input type="text" name="key" placeholder="Busqueda por filto" size="15" /></td>
+		<td><input type="text" name="key" placeholder="Search Task" size="15" /></td>
 		<td><button type="submit">Search</button></td>
-	</tr>
-	</table>
+		</tr>
+		</table>
 	</form>
-    </div>
-
-
-	<hr> </hr>
+	</div>
 	<b><big>Lista de Prendas :</big></b>
 	<table>
 		<tr id="row">
@@ -60,8 +57,6 @@
 			<td>{{ prenda["Codigo"] }}</td>
 			<td>{{ prenda["URL_de_imagen"] }}</td>
 		</tr>
-		
-
 		{% endfor %}
 	</table>
 	{% else %}

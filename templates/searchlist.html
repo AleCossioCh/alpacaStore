@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>{{t}}</title>
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+	</head>
+<body>
+	<hr>
+	{% if prendas[0] %}
+	<h3>Result of the Search : </h3>
+	<table>
+	    <tr id="row">
+	    	<td>Nombre</td>
+	    	<td>Descripcion</td>
+            <td>Precio</td>
+            <td>Color</td>
+            <td>Stock</td>
+            <td>Clasificacion</td>
+            <td>Codigo</td>
+            <td>URL_de_imagen</td>
+		    <td class="func">Options</td>
+	    </tr>
+		{% for prenda in prendas %}
+		<tr class="datas">
+			<td>{{ prenda["Nombre"] }}</td>
+			<td>{{ prenda["Descripcion"] }}</td>
+			<td>{{ prenda["Precio"] }}</td>
+			<td>{{ prenda["Color"] }}</td>
+			<td>{{ prenda["Stock"] }}</td>
+			<td>{{ prenda["Clasificaciones"] }}</td>
+			<td>{{ prenda["Codigo"] }}</td>
+			<td>{{ prenda["URL_de_imagen"] }}</td>
+			<td><a href="./remove?_id={{ prenda['_id'] }}"><button type="submit">Agregar al Carrito</button></a></td>
+		</tr>
+		{% endfor %}
+	{% else %}
+		<h4>No Result Found !!</h4>
+	{% endif %}
+	</table>
+	<a href="/">Return to TaskList</a>
+</body>
+</html>
+

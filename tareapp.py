@@ -15,23 +15,22 @@ def redirect_url():
         url_for('index')
 
 @app.route("/")
-
 @app.route("/list")
 def lists():
     prendas_1= prendas.find()
     return render_template('index.html', prendas=prendas_1,tittle=t)
 
-@app.route("/")
-@app.route("/Busqueda")
-def tasks ():
-    #Display the Uncompleted Tasks
-    prendas_1 = prendas.find({"done":"no"})
-    #a2="active"
-    return render_template('index.html',prendas=prendas_1,tittle=t)
 
+@app.route("/search", methods=["GET"])
 
-
-
+def search():
+    key=request.values.get("key")
+    refer=request.values.get("refer")
+    if(key=="_id"):
+        prendas_1=prendas.find({refer:ObjectId(key)})
+    else:
+        prendas_1=prendas.find({refer:key})
+    return render_template('searchlist.html',prendas=prendas_1,t=t)
 
 # @app.route("/action", methods=["POST"])
 # def action():
