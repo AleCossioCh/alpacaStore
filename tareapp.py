@@ -35,7 +35,7 @@ def search():
 @app.route("/CategoriasGorras")
 def tasks ():
     
-    prendas_l = prendas.find({"categoria":"001"})
+    prendas_l = prendas.find({"categoria":"2.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
 # @app.route("/action", methods=["POST"])
