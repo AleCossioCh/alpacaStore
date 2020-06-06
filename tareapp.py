@@ -25,8 +25,11 @@ def lists():
 def verCarrito():
     prendas_carrito = carrito.find({"_id":"1.0"}, {"_id":0})
     lista = prendas_carrito[0]
-    prenditas = lista["prendas"] 
-    return render_template('verCarrito.html',prendas=prenditas,tittle=t)
+    prenditas = lista["prendas"]
+    totalPagar = 0
+    for i in prenditas:
+        totalPagar = totalPagar + i["Precio"] 
+    return render_template('verCarrito.html',prendas=prenditas,tittle=t, totalPagar = totalPagar)
 
 @app.route("/search", methods=["GET"])
 def search():
