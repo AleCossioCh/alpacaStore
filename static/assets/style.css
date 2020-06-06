@@ -63,13 +63,7 @@ th.func2{
 input[type=submit] {
     width: 20em;  height: 2em;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
+
 li {
     float: left;
 }
@@ -83,8 +77,3 @@ li a {
 a.active {
     background-color: #4CAF50;
 }
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
-}
-
