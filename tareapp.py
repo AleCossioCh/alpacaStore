@@ -7,6 +7,7 @@ app = Flask (__name__)
 client =MongoClient("mongodb://127.0.0.1:27017")
 db=client.proyecto
 prendas= db.Prendas
+carrito = db.carrito
 t="AlpacaStore"
 
 def redirect_url():
@@ -20,6 +21,10 @@ def lists():
     prendas_1= prendas.find()
     return render_template('index.html', prendas=prendas_1,tittle=t)
 
+@app.route("/verCarrito")
+def verCarrito():
+    prendas_carrito = carrito.find({"_id":1.0}, {"_id":0, "prendas":1}) 
+    return render_template('verCarrito.html',prendas=prendas_carrito,tittle=t)
 
 @app.route("/search", methods=["GET"])
 def search():
