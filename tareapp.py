@@ -85,7 +85,15 @@ def tasks3 ():
     prendas_l = prendas.find({"categoria":"3.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
+@app.route("/fabricacionManual")
+def estilo_1():
+    prendas_l = prendas.find({"Estilo_de_Fabricacion":"Manual"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
 
+@app.route("/fabricacionMaquina")
+def estilo_2():
+    prendas_l = prendas.find({"Estilo_de_Fabricacion":"Maquina"})
+    return render_template('index.html',prendas=prendas_l,tittle=t)
 
 @app.route("/CategoriaPullovers")
 def tasks4 ():
