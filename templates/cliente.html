@@ -27,7 +27,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Features</a>
+					<a class="nav-link" href="/verCarrito">Ver Carrito</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -43,7 +43,28 @@
 						<a class="dropdown-item" href="/Categoriachalinas">Chalinas</a>
 						<a class="dropdown-item" href="/CategoriaMantas">Mantas</a>
 						<a class="dropdown-item" href="/CategoriaJerseys">Jerseys</a>
-						<a class="dropdown-item" href="/CategoriaChaquetas">Chaquetas</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						Clasificaciones
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/clasificacionNina">Ropa de nina</a>
+						<a class="dropdown-item" href="/clasificacionNino">Ropa de nino</a>
+						<a class="dropdown-item" href="/clasificacionDama">Ropa de dama</a>
+						<a class="dropdown-item" href="/clasificacionVaron">Ropa de varon</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						Estilo de Fabricacion
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/fabricacionManual">Manual</a>
+						<a class="dropdown-item" href="/fabricacionMaquina">Maquina</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -61,29 +82,10 @@
 	</nav>
 	<hr>
 	{% if prendas[0] %}
-	<div span="right">
-		<form action="/search" method="GET">
-			<table class="none" id="close">
-				<tr>
-					<td></td>
-					<td></td>
-					<td><big><b>Search Reference:</b></big></td>
-					<td><select name="refer" required>
-							<option value="Nombre">Nombre</option>
-							<option value="Color">Color</option>
-							<option value="Codigo">Codigo</option>
-							<option value="categoria">Categoria</option>
-						</select></td>
-					<td><input type="text" name="key" placeholder="Search Task" size="15" /></td>
-					<td><button type="submit">Search</button></td>
-				</tr>
-			</table>
-
-		</form>
 	</div>
-	<b><big>Lista de Clientes :</big></b>
-	<table>
-		<tr id="row">
+	<b>Lista de Clientes :</b>
+	<table class="table table-borderless">
+		<tr>
 			<th>_id</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
@@ -96,7 +98,7 @@
             
 		</tr>
 		{% for prenda in prendas %}
-		<tr class="datas">
+		<tr>
 			<td>{{ prenda["_id"] }}</td>
 			<td>{{ prenda["Nombre"] }}</td>
 			<td>{{ prenda["Apellido"] }}</td>
@@ -110,7 +112,7 @@
 		{% endfor %}
 	</table>
 	{% else %}
-	<h4>No Tasks in the List !!</h4>
+	<h4>No Clients in the List !!</h4>
 	{% endif %}
 </body>
 

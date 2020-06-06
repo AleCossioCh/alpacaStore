@@ -8,6 +8,8 @@ client =MongoClient("mongodb://127.0.0.1:27017")
 db=client.proyecto
 prendas= db.Prendas
 carrito = db.carrito
+cliente =db.Cliente
+
 t="AlpacaStore"
 
 def redirect_url():
@@ -20,6 +22,11 @@ def redirect_url():
 def lists():
     prendas_1= prendas.find()
     return render_template('index.html', prendas=prendas_1,tittle=t)
+
+@app.route("/cliente")
+def clientes():
+    cliente_1= cliente.find()
+    return render_template('cliente.html', prendas=cliente_1,tittle=t)
 
 @app.route("/verCarrito")
 def verCarrito():
