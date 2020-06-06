@@ -27,7 +27,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Features</a>
+					<a class="nav-link" href="/verCarrito">Ver Carrito</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -43,7 +43,6 @@
 						<a class="dropdown-item" href="/Categoriachalinas">Chalinas</a>
 						<a class="dropdown-item" href="/CategoriaMantas">Mantas</a>
 						<a class="dropdown-item" href="/CategoriaJerseys">Jerseys</a>
-						<a class="dropdown-item" href="/CategoriaChaquetas">Chaquetas</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -81,36 +80,29 @@
 
 		</form>
 	</div>
-	<b><big>Lista de Prendas :</big></b>
-	<table>
-		<tr id="row">
-			<th>Nombre</th>
-			<th>Descripcion</th>
-			<th>Precio</th>
-			<th>Color</th>
-			<th>Stock</th>
-			<th>Clasificaciones</th>
-			<th>Codigo</th>
-			<th>Estilo de Fabricacion</th>
-			<th>URL_de_imagen</th>
-		</tr>
-		{% for prenda in prendas %}
-		<tr class="datas">
-			<td>{{ prenda["Nombre"] }}</td>
-			<td>{{ prenda["Descripcion"] }}</td>
-			<td>{{ prenda["Precio"] }}</td>
-			<td>{{ prenda["Color"] }}</td>
-			<td>{{ prenda["Stock"] }}</td>
-			<td>{{ prenda["Clasificaciones"] }}</td>
-			<td>{{ prenda["Codigo"] }}</td>
-			<td>{{ prenda["Estilo_de_Fabricacion"] }}</td>
-			<td>{{ prenda["URL_de_imagen"] }}</td>
-		</tr>
-		{% endfor %}
-	</table>
+	<h3>Lista de Prendas :</h3>
+	<div class="container">
+		<div class=" row justify-content-center align-items-center">
+			{% for prenda in prendas %}
+			<div class="col-3 card ml-3 mr-3" style="width: 20rem;">
+				<img class="card-img-top" src='{{prenda["URL_de_imagen"]}}' alt="Card image cap">
+				<div class="card-body text-center">
+					<h4 class="card-title">{{ prenda["Nombre"] }}</h4>
+					 <h6>Codigo: {{ prenda["Codigo"] }}</h6>
+					<p class="card-text">{{ prenda["Descripcion"] }}</p>
+					<p class="card-text">Precio: {{ prenda["Precio"] }}, Color: {{ prenda["Color"] }}, Stock:
+						{{ prenda["Stock"] }}, Fabricacion: {{ prenda["Estilo_de_Fabricacion"] }}</p>
+					<a href="#" class="btn btn-warning">Agregar al Carrito</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
 	{% else %}
 	<h4>No Tasks in the List !!</h4>
 	{% endif %}
+
 </body>
 
 </html>

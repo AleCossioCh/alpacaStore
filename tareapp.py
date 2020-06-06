@@ -23,8 +23,10 @@ def lists():
 
 @app.route("/verCarrito")
 def verCarrito():
-    prendas_carrito = carrito.find({"_id":1.0}, {"_id":0, "prendas":1}) 
-    return render_template('verCarrito.html',prendas=prendas_carrito,tittle=t)
+    prendas_carrito = carrito.find({"_id":"1.0"}, {"_id":0})
+    lista = prendas_carrito[0]
+    prenditas = lista["prendas"] 
+    return render_template('verCarrito.html',prendas=prenditas,tittle=t)
 
 @app.route("/search", methods=["GET"])
 def search():
@@ -77,11 +79,6 @@ def tasks7 ():
 @app.route("/CategoriaJerseys")
 def tasks8 ():
     prendas_l = prendas.find({"categoria":"8.0"})
-    return render_template('index.html',prendas=prendas_l,tittle=t)
-
-@app.route("/CategoriaChaquetas")
-def tasks9 ():
-    prendas_l = prendas.find({"categoria":"9.0"})
     return render_template('index.html',prendas=prendas_l,tittle=t)
 
 @app.route("/prendasMasVendidas")
