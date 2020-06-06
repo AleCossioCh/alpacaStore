@@ -31,6 +31,34 @@ def verCarrito():
         totalPagar = totalPagar + i["Precio"] 
     return render_template('verCarrito.html',prendas=prenditas,tittle=t, totalPagar = totalPagar)
 
+@app.route("/clasificacionNina")
+def clasificacion1():
+    prendas_1 = prendas.find({'Clasificaciones':{'$in':["001"]}})
+    return render_template('index.html',prendas=prendas_1,tittle=t)
+
+@app.route("/clasificacionNino")
+def clasificacion2():
+    prendas_1 = prendas.find({'Clasificaciones':{'$in':["002"]}})
+    return render_template('index.html',prendas=prendas_1,tittle=t)
+
+@app.route("/clasificacionDama")
+def clasificacion3():
+    prendas_1 = prendas.find({'Clasificaciones':{'$in':["003"]}})
+    return render_template('index.html',prendas=prendas_1,tittle=t)
+
+@app.route("/clasificacionVaron")
+def clasificacion4():
+    prendas_1 = prendas.find({'Clasificaciones':{'$in':["004"]}})
+    return render_template('index.html',prendas=prendas_1,tittle=t)
+
+@app.route("/agregarCarrito")
+def agregarCarrito():
+
+    # key=request.values.get("_id")
+    # todos.remove({"_id":ObjectId(key)})
+    # return redirect("/") 
+    return redirect("/list")
+
 @app.route("/search", methods=["GET"])
 def search():
     key=request.values.get("key")
