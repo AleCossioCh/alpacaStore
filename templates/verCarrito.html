@@ -60,29 +60,35 @@
 		</div>
 	</nav>
 	<hr>
+	<ul class="nav nav-pills justify-content-end">
+		<li class="nav-item">
+		  <a class="nav-link" href="#">Pagar Tarjeta</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="#">Pagar Paypal</a>
+		</li>
+	  </ul>
 	{% if prendas[0] %}
 	<b><big>Lista de Prendas en el carrito :</big></b>
-	<table>
-		<tr id="row">
-			<th>Nombre</th>
-			<th>Descripcion</th>
-			<th>Precio</th>
-			<th>Color</th>
-			<th>Stock</th>
-			<th>Clasificaciones</th>
-			<th>Codigo</th>
-			<th>Estilo de Fabricacion</th>
+	<table class="table table-hover">
+		<tr class="table-active">
+			<th scope="col">Nombre</th>
+			<th scope="col">Descripcion</th>
+			<th scope="col">Precio</th>
+			<th scope="col">Color</th>
+			<th scope="col">Codigo</th>
+			<th scope="col">Estilo de Fabricacion</th>
+			<th scope="col">Opciones</th>
 		</tr>
 		{% for prenda in prendas %}
-		<tr class="datas">
+		<tr>
 			<td>{{ prenda["Nombre"] }}</td>
 			<td>{{ prenda["Descripcion"] }}</td>
 			<td>{{ prenda["Precio"] }}</td>
 			<td>{{ prenda["Color"] }}</td>
-			<td>{{ prenda["Stock"] }}</td>
-			<td>{{ prenda["Clasificaciones"] }}</td>
 			<td>{{ prenda["Codigo"] }}</td>
 			<td>{{ prenda["Estilo_de_Fabricacion"] }}</td>
+			<td class="func1"><a href="./QuitarCarrito?Codigo={{ prenda['Codigo'] }}"><button type="submit" class="btn btn-danger">QUITAR</button></a></td>
 		</tr>
 		{% endfor %}
 	</table>

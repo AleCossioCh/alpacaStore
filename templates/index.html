@@ -66,15 +66,15 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><big><b>Search Reference:</b></big></td>
-					<td><select name="refer" required>
+					<td><b>Buscar:</b></td>
+					<td><select class="custom-select mr-sm-2" name="refer" required>
 							<option value="Nombre">Nombre</option>
 							<option value="Color">Color</option>
 							<option value="Codigo">Codigo</option>
 							<option value="categoria">Categoria</option>
 						</select></td>
-					<td><input type="text" name="key" placeholder="Search Task" size="15" /></td>
-					<td><button type="submit">Search</button></td>
+					<td><input class="form-control" type="text" name="key" placeholder="dato de la busqueda" size="15" /></td>
+					<td><button type="submit" class="btn btn-success">Search</button></td>
 				</tr>
 			</table>
 
@@ -84,7 +84,7 @@
 	<div class="container">
 		<div class=" row justify-content-center align-items-center">
 			{% for prenda in prendas %}
-			<div class="col-3 card ml-3 mr-3" style="width: 20rem;">
+			<div class="col-3 card ml-3 mr-3 mb-3" style="width: 20rem;">
 				<img class="card-img-top" src='{{prenda["URL_de_imagen"]}}' alt="Card image cap">
 				<div class="card-body text-center">
 					<h4 class="card-title">{{ prenda["Nombre"] }}</h4>
