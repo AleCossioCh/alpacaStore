@@ -58,13 +58,31 @@ def clasificacion4():
     prendas_1 = prendas.find({'Clasificaciones':{'$in':["004"]}})
     return render_template('index.html',prendas=prendas_1,tittle=t)
 
-@app.route("/agregarCarrito")
+@app.route("/agregarCarrito", methods=["POST"])
 def agregarCarrito():
-
-    # key=request.values.get("_id")
-    # todos.remove({"_id":ObjectId(key)})
-    # return redirect("/") 
+    Codigo =request.values.get("Codigo")
+    Nombre=request.values.get("Nombre")
+    Precio=request.values.get("Precio")
+    Color=request.values.get("Color")
+    Numero_de_Ventas=request.values.get("Numero_de_Ventas")
+    Numero_de_Vistas=request.values.get("Numero_de_Vistas")
+    Stock=request.values.get("Stock")
+    Descripcion=request.values.get("Descripcion")
+    categoria=request.values.get("categoria")
+    URL_de_imagen=request.values.get("URL_de_imagen")
+    Clasificaciones=request.values.get("Clasificaciones")
+    Estilo_de_Fabricacion=request.values.get("Estilo_de_Fabricacion")
+    
+    prendaAinsertar={'Codigo':Codigo, 'Nombre':Nombre, 'Precio':float(Precio), 'Color':Color, 'Numero_de_Ventas':float(Numero_de_Ventas), 
+     'Numero_de_Vistas':float(Numero_de_Vistas), 'Stock':float(Stock),'Descripcion':Descripcion, 'categoria':categoria, 'URL_de_imagen':URL_de_imagen, 'Clasificaciones':Clasificaciones, 'Estilo_de_Fabricacion':Estilo_de_Fabricacion}
+    
+    carrito.update({"_id":"1.0"}, {'$push':{'prendas':prendaAinsertar}})    
+    
+    # todos.update({"_id":ObjectId(id)},{'$set':{"name":name,"desc":desc, "date":date
+    # ,"pr":pr}})
     return redirect("/list")
+
+
 
 @app.route("/search", methods=["GET"])
 def search():

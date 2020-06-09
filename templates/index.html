@@ -20,9 +20,9 @@
 <body>
 	<ul class="nav nav-pills justify-content-end">
 		<li class="nav-item">
-		  <a class="nav-link pt-4 pb-4" href="/cliente">Ver Clientes</a>
+			<a class="nav-link pt-4 pb-4" href="/cliente">Ver Clientes</a>
 		</li>
-	  </ul>
+	</ul>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="/list">Alpaca-Store</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -100,7 +100,8 @@
 							<option value="Codigo">Codigo</option>
 							<option value="categoria">Categoria</option>
 						</select></td>
-					<td><input class="form-control" type="text" name="key" placeholder="dato de la busqueda" size="15" /></td>
+					<td><input class="form-control" type="text" name="key" placeholder="dato de la busqueda"
+							size="15" /></td>
 					<td><button type="submit" class="btn btn-warning">Search</button></td>
 				</tr>
 			</table>
@@ -114,11 +115,25 @@
 				<img class="card-img-top" src='{{prenda["URL_de_imagen"]}}' alt="Card image cap">
 				<div class="card-body text-center align-middle">
 					<h4 class="card-title">{{ prenda["Nombre"] }}</h4>
-					 <h6>Codigo: {{ prenda["Codigo"] }}</h6>
+					<h6>Codigo: {{ prenda["Codigo"] }}</h6>
 					<p class="card-text">{{ prenda["Descripcion"] }}</p>
 					<p class="card-text">Precio: {{ prenda["Precio"] }}, Color: {{ prenda["Color"] }}, Stock:
 						{{ prenda["Stock"] }}, Fabricacion: {{ prenda["Estilo_de_Fabricacion"] }}</p>
-					<a href="./agregarCarrito?_id={{ prenda['_id'] }}"><button class="btn btn-success" type="submit">Agregar al Carrito</button></a> 
+					<form action="/agregarCarrito" method="POST">
+						<input type="text" name="Codigo" value="{{ prenda['Codigo'] }}" hidden>
+						<input type="text" name="Nombre" value="{{ prenda['Nombre'] }}" hidden>
+						<input type="text" name="Precio" value="{{ prenda['Precio'] }}" hidden>
+						<input type="text" name="Color" value="{{ prenda['Color'] }}" hidden>
+						<input type="text" name="Numero_de_Ventas" value="{{ prenda['Numero_de_Ventas'] }}" hidden>
+						<input type="text" name="Numero_de_Vistas" value="{{ prenda['Numero_de_Vistas'] }}" hidden>
+						<input type="text" name="Stock" value="{{ prenda['Stock'] }}" hidden>
+						<input type="text" name="Descripcion" value="{{ prenda['Descripcion'] }}" hidden>
+						<input type="text" name="categoria" value="{{ prenda['categoria'] }}" hidden>
+						<input type="text" name="URL_de_imagen" value="{{ prenda['URL_de_imagen'] }}" hidden>
+						<input type="text" name="Clasificaciones" value="{{ prenda['Clasificaciones'] }}" hidden>
+						<input type="text" name="Estilo_de_Fabricacion" value="{{ prenda['Estilo_de_Fabricacion'] }}" hidden>
+						<a href=""><button class="btn btn-success" type="submit">Agregar al Carrito</button></a>
+					</form>
 				</div>
 			</div>
 			{% endfor %}
