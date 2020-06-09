@@ -22,30 +22,7 @@
 		<a class="navbar-brand" href="/list">Alpaca-Store</a>
 	</nav>
 	<hr>
-	<!--
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	Launch demo modal
-  </button>
-   
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-		  ...
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-		</div>
-	  </div>
-	</div>
-  </div>-->
+	
 	<ul class="nav nav-pills justify-content-end">
 		<li class="nav-item">
 		  <a class="nav-link" href="#">Pagar Tarjeta</a>
@@ -74,7 +51,12 @@
 			<td>{{ prenda["Color"] }}</td>
 			<td>{{ prenda["Codigo"] }}</td>
 			<td>{{ prenda["Estilo_de_Fabricacion"] }}</td>
-			<td class="func1"><a href="./QuitarCarrito?Codigo={{ prenda['Codigo'] }}"><button type="submit" class="btn btn-danger">QUITAR</button></a></td>
+			<td>
+				<form action="/quitarCarrito" method="POST">
+					<input type="text" name="Codigo" value="{{ prenda['Codigo'] }}" hidden>
+					<button class="btn btn-danger" type="submit">Quitar</button>
+				</form>
+			</td>
 		</tr>
 		{% endfor %}
 	</table>
@@ -82,4 +64,5 @@
 	<h4>No Tasks in the List !!</h4>
 	{% endif %}
 		<h3>Total a Pagar: {{totalPagar}}</h3>
+	<a href="/resetearCarrito"><button class="btn btn-warning" type="submit">Resetear Carrito</button></a>
 </body>

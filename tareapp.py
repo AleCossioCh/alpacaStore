@@ -60,6 +60,7 @@ def clasificacion4():
 
 @app.route("/agregarCarrito", methods=["POST"])
 def agregarCarrito():
+    #obtiene la informacion de la prenda que le dio agregar al carrito
     Codigo =request.values.get("Codigo")
     Nombre=request.values.get("Nombre")
     Precio=request.values.get("Precio")
@@ -72,16 +73,35 @@ def agregarCarrito():
     URL_de_imagen=request.values.get("URL_de_imagen")
     Clasificaciones=request.values.get("Clasificaciones")
     Estilo_de_Fabricacion=request.values.get("Estilo_de_Fabricacion")
-    
+    #inserta la prenda en el carrito    
     prendaAinsertar={'Codigo':Codigo, 'Nombre':Nombre, 'Precio':float(Precio), 'Color':Color, 'Numero_de_Ventas':float(Numero_de_Ventas), 
-     'Numero_de_Vistas':float(Numero_de_Vistas), 'Stock':float(Stock),'Descripcion':Descripcion, 'categoria':categoria, 'URL_de_imagen':URL_de_imagen, 'Clasificaciones':Clasificaciones, 'Estilo_de_Fabricacion':Estilo_de_Fabricacion}
-    
+     'Numero_de_Vistas':float(Numero_de_Vistas), 'Stock':float(Stock),'Descripcion':Descripcion, 'categoria':categoria, 'URL_de_imagen':URL_de_imagen,
+      'Clasificaciones':Clasificaciones, 'Estilo_de_Fabricacion':Estilo_de_Fabricacion}
     carrito.update({"_id":"1.0"}, {'$push':{'prendas':prendaAinsertar}})    
-    
-    # todos.update({"_id":ObjectId(id)},{'$set':{"name":name,"desc":desc, "date":date
-    # ,"pr":pr}})
+    #disminuye el stock en 1 por la reserva de la prenda
+    #db.Prendas.update({"Codigo" : 'Alpaca.P.001'},{"$inc":{"Stock":-1}})
+    prendas.update({"Codigo":Codigo},{'$inc':{'Stock':-1}})
     return redirect("/list")
 
+@app.route("/quitarCarrito", methods=["POST"])
+def quitarCarrito():
+    #obtiene la informacion de la prenda que le dio agregar al carrito
+    Codigo =request.values.get("Codigo")
+    
+    #elimina la prenda en el carrito
+    #db.carrito.update({_id : 1.0},{$pull:{"prendas":{"Codigo":"Alpaca.P.001"}}})
+    carrito.update({"_id":"1.0"},{'$pull':{"prendas":{"Codigo":Codigo}}})
+        
+    #aumenta el stock en 1 por la reserva de la prenda
+    #db.Prendas.update({"Codigo" : 'Alpaca.P.001'},{"$inc":{"Stock":1}})
+    prendas.update({"Codigo":Codigo},{'$inc':{'Stock':1}})
+    return redirect("/verCarrito")
+
+@app.route("/resetearCarrito")
+def resetearCarrito():
+    # db.carrito.update({"_id":"1.0"}, {"prendas":[]})
+    carrito.update({"_id":"1.0"},{'prendas':[]})
+    return redirect("/verCarrito")
 
 
 @app.route("/search", methods=["GET"])
