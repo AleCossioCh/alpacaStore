@@ -22,15 +22,54 @@
 		<a class="navbar-brand" href="/list">Alpaca-Store</a>
 	</nav>
 	<hr>
-	
-	<ul class="nav nav-pills justify-content-end">
-		<li class="nav-item">
-		  <a class="nav-link" href="#">Pagar Tarjeta</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link" href="#">Pagar Paypal</a>
-		</li>
-	  </ul>
+
+
+
+	<a>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			Metodo de Pago
+		</button>
+
+		<a href="/resetearCarrito"><button class="btn btn-warning" type="submit">Resetear Carrito</button></a>
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Metodo de Pago</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="/pagar">
+							<div class="form-row align-items-center">
+							  <div class="col-auto my-1">
+								<label class="mr-sm-2" for="inlineFormCustomSelect">Datos</label>
+								<select name="refer" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+								  <option selected>Elige el nombre de quien pagara</option>
+								  {% for cli in cliente %}
+								  <option value="{{cli['Nombre']}}">{{ cli["Nombre"] }}</option>
+								  {% endfor %}
+								</select>
+								<select name="pago" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+									<option selected>Elige como pagar</option>
+									<option value="Paypal">Paypal</option>
+									<option value="Tarjeta">Tarjeta</option>
+								</select>
+							  </div>
+							</div>
+							<button class="btn btn-success" type="submit">Pagar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+
 	{% if prendas[0] %}
 	<b><big>Lista de Prendas en el carrito :</big></b>
 	<table class="table table-hover">
@@ -63,6 +102,6 @@
 	{% else %}
 	<h4>No Tasks in the List !!</h4>
 	{% endif %}
-		<h3>Total a Pagar: {{totalPagar}}</h3>
-	<a href="/resetearCarrito"><button class="btn btn-warning" type="submit">Resetear Carrito</button></a>
+	<h3>Total a Pagar: {{totalPagar}}</h3>
+	
 </body>

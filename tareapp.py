@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson import ObjectId
+import random
 import os
 
 app = Flask (__name__)
@@ -33,10 +34,11 @@ def verCarrito():
     prendas_carrito = carrito.find({"_id":"1.0"}, {"_id":0})
     lista = prendas_carrito[0]
     prenditas = lista["prendas"]
+    cliente_1=cliente.find()
     totalPagar = 0
     for i in prenditas:
         totalPagar = totalPagar + i["Precio"] 
-    return render_template('verCarrito.html',prendas=prenditas,tittle=t, totalPagar = totalPagar)
+    return render_template('verCarrito.html',cliente=cliente_1, prendas=prenditas,tittle=t, totalPagar = totalPagar)
 
 @app.route("/clasificacionNina")
 def clasificacion1():
@@ -103,6 +105,30 @@ def resetearCarrito():
     carrito.update({"_id":"1.0"},{'prendas':[]})
     return redirect("/verCarrito")
 
+@app.route("/pagar")
+def pagarPaypal():
+    #obtiene el total de precio de las prendas del carrito
+    prendas_carrito = carrito.find({"_id":"1.0"}, {"_id":0})
+    lista = prendas_carrito[0]
+    prenditas = lista["prendas"]
+    totalPagar = 0
+    for i in prenditas:
+        totalPagar = totalPagar + i["Precio"]
+        totalPagar = totalPagar
+    totalPagar = totalPagar* -1
+    #obtiene los datos del form cliente que va a pagar
+    pago=request.values.get("pago")
+    Nombre=request.values.get("refer")
+    
+    #se descuenta el monto en de la tarjeta
+    # db.Cliente.update({"_id" : 20001.0},{"$inc":{"Saldo_de_Paypal":-100}})
+    if(random.random()<0.8):
+        if(pago=="Paypal"):
+            cliente.update({"Nombre":Nombre},{'$inc':{"Saldo_de_Paypal":totalPagar}})
+        else:
+            cliente.update({"Nombre":Nombre},{'$inc':{"Saldo_de_tarjeta":totalPagar}})
+    resetearCarrito()
+    return redirect("/list")
 
 @app.route("/search", methods=["GET"])
 def search():
